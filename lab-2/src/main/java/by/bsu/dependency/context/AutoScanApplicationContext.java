@@ -1,5 +1,10 @@
 package by.bsu.dependency.context;
 
+import by.bsu.dependency.annotation.Bean;
+import org.reflections.Reflections;
+
+import java.util.ArrayList;
+
 public class AutoScanApplicationContext extends AbstractApplicationContext {
 
     /**
@@ -12,41 +17,8 @@ public class AutoScanApplicationContext extends AbstractApplicationContext {
      * @param packageName имя сканируемого пакета
      */
     public AutoScanApplicationContext(String packageName) {
-        throw new IllegalStateException("not implemented");
-    }
-
-    @Override
-    public void start() {
-        throw new IllegalStateException("not implemented");
-    }
-
-    @Override
-    public boolean isRunning() {
-        throw new IllegalStateException("not implemented");
-    }
-
-    @Override
-    public boolean containsBean(String name) {
-        throw new IllegalStateException("not implemented");
-    }
-
-    @Override
-    public Object getBean(String name) {
-        throw new IllegalStateException("not implemented");
-    }
-
-    @Override
-    public <T> T getBean(Class<T> clazz) {
-        throw new IllegalStateException("not implemented");
-    }
-
-    @Override
-    public boolean isPrototype(String name) {
-        throw new IllegalStateException("not implemented");
-    }
-
-    @Override
-    public boolean isSingleton(String name) {
-        throw new IllegalStateException("not implemented");
+        var reflections = new Reflections(packageName);
+        var beanClasses = new ArrayList<>(reflections.getTypesAnnotatedWith(Bean.class));
+        init(beanClasses);
     }
 }

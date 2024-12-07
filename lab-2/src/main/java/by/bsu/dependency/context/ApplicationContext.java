@@ -21,8 +21,8 @@ public interface ApplicationContext {
      * Проверяет, содержится ли в контексте бин с переданным идентификатором (именем).
      *
      * @param name имя бина
-     * @throws ApplicationContextNotStartedException если контекст еще не запущен
      * @return {@code true}, если бин присутствует в контексте, иначе {@code false}.
+     * @throws ApplicationContextNotStartedException если контекст еще не запущен
      */
     boolean containsBean(String name);
 
@@ -31,9 +31,9 @@ public interface ApplicationContext {
      * один и тот же объект, а для {@code PROTOTYPE} - каждый раз новый объект.
      *
      * @param name имя бина
-     * @throws NoSuchBeanDefinitionException если бин с таким именем не был объявлен.
-     * @throws ApplicationContextNotStartedException если контекст еще не запущен
      * @return соответствующий инстанс бина
+     * @throws NoSuchBeanDefinitionException         если бин с таким именем не был объявлен.
+     * @throws ApplicationContextNotStartedException если контекст еще не запущен
      */
     Object getBean(String name);
 
@@ -42,10 +42,10 @@ public interface ApplicationContext {
      * один и тот же объект, а для {@code PROTOTYPE} - каждый раз новый объект.
      *
      * @param clazz класс бина
-     * @throws NoSuchBeanDefinitionException если бин такого типа не был объявлен.
-     * @throws ApplicationContextNotStartedException если контекст еще не запущен
+     * @param <T>   тип бина
      * @return соответствующий инстанс бина
-     * @param <T> тип бина
+     * @throws NoSuchBeanDefinitionException         если бин такого типа не был объявлен.
+     * @throws ApplicationContextNotStartedException если контекст еще не запущен
      */
     <T> T getBean(Class<T> clazz);
 
@@ -53,8 +53,8 @@ public interface ApplicationContext {
      * Проверяет, имеет ли бин скоуп {@code SINGLETON}
      *
      * @param name имя бина
-     * @throws NoSuchBeanDefinitionException если бин такого типа не был объявлен.
      * @return {@code true}, если бин имеет скоуп {@code SINGLETON}, иначе {@code false}.
+     * @throws NoSuchBeanDefinitionException если бин такого типа не был объявлен.
      */
     boolean isSingleton(String name);
 
@@ -62,8 +62,8 @@ public interface ApplicationContext {
      * Проверяет, имеет ли бин скоуп {@code PROTOTYPE}
      *
      * @param name имя бина
-     * @throws NoSuchBeanDefinitionException если бин такого типа не был объявлен.
      * @return {@code true}, если бин имеет скоуп {@code PROTOTYPE}, иначе {@code false}.
+     * @throws NoSuchBeanDefinitionException если бин такого типа не был объявлен.
      */
     boolean isPrototype(String name);
 }
